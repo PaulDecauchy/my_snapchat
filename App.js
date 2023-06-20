@@ -1,16 +1,27 @@
-import { StatusBar } from 'expo-status-bar';
-import { Text, View } from 'react-native';
-import './styles.css'
+import * as React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import LoginScreen from './screens/LoginScreen';
+import RegisterScreen from './screens/RegisterScreen';
 
+const Stack = createNativeStackNavigator();
 
-export default function App() {
+const App = () => {
   return (
-    <View className="flex-1 items-center justify-center bg-red-300">
-      <Text className="text-blue-500">Open up App.js to start working on your app!</Text>
-      <Text className="text-blue-500">Changes you make will automatically reload.</Text>
-      <Text className="text-blue-500">Shake your phone to open the developer menu.</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen
+          name="Login"
+          component={LoginScreen}
+          options={{ title: 'Login' }} />
+          <Stack.Screen
+        name="Register"
+        component={RegisterScreen}
+        options={{ title: 'Register' }}
+      />
+      </Stack.Navigator> 
+    </NavigationContainer>
   );
-}
+};
 
+export default App;
