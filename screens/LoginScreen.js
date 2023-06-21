@@ -1,17 +1,43 @@
 import * as React from "react";
-import { View, Text, Button } from "react-native";
-import Login from "../components/Login";
+import { View } from "react-native";
+import { TextInput, Button } from 'react-native-paper';
 // import "../styles.css";
 
-function LoginScreen({navigation}) {
+function LoginScreen({ navigation }) {
+    const [login, setLogin] = React.useState("");
+    const [password, setPassword] = React.useState("");
     return (
         <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
             {/* <Login /> */}
-            <Button
-                // style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}
-                title="Register"
-                onPress={() => navigation.navigate('Register')}
+            <TextInput
+                style={{ minWidth: "50%" }}
+                label="Login"
+                mode="outlined"
+                activeOutlineColor="blue"
+                value={login}
+                onChangeText={login => setLogin(login)}
             />
+            <TextInput
+                style={{ minWidth: "50%" }}
+                label="Password"
+                mode="outlined"
+                value={password}
+                activeOutlineColor="blue"
+                secureTextEntry={true}
+                onChangeText={password => setPassword(password)}
+                right={<TextInput.Icon icon="eye" />}
+            />
+            <Button 
+            style={{ minWidth: "20%", marginTop: "5px" }}
+            type="contained"
+            loading={false}
+            icon="login" 
+            mode="contained" 
+            buttonColor="blue"
+            rippleColor= "gray"
+            onPress={() => console.log('Pressed')}>
+                Press me
+            </Button>
         </View>
     );
 }
